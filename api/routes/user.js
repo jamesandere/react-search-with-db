@@ -9,10 +9,7 @@ router.get("/", async(req, res) => {
         const keysWithoutId = Object.keys(keys._doc).filter(x => 
             x !== "_id" && x !== "__v"    
         );
-        // const re = users.filter((user)=> 
-        //     keysWithoutId.some(key => user[key].toLowercase().includes(q))
-        // );
-        // console.log(re);
+
         const filteredUsers = users.filter(user=> 
             keysWithoutId.some(key => user[key].toLowerCase().includes(q)))
         res.status(200).json(filteredUsers.splice(0,10));
